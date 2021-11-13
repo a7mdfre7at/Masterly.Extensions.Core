@@ -5,7 +5,31 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Company>Masterly</Company>
     <Description>Rich set of C# extensions methods</Description>
+    <PackageProjectUrl>https://github.com/a7mdfre7at/Masterly.Extensions.Core</PackageProjectUrl>
+    <PackageIcon>repo_image.png</PackageIcon>
+    <PackageReadmeFile>README.nuget.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/a7mdfre7at/Masterly.Extensions.Core</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Extensions;List;Collection;Dictionary;Type;Reflection;Object;Enumerable;String</PackageTags>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.nuget.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\repo_image.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Ardalis.GuardClauses" Version="3.3.0" />
