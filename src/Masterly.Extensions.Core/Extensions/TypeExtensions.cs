@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Ardalis.GuardClauses;
+using JetBrains.Annotations;
 
 namespace System
 {
@@ -58,12 +60,26 @@ namespace System
         /// Internally uses <see cref="Type.IsAssignableFrom"/>.
         /// </summary>
         /// <typeparam name="TTarget">Target type</typeparam> (as reverse).
-        //public static bool IsAssignableTo<TTarget>([NotNull] this Type type)
-        //{
-        //    Guard.Against.Null(type, nameof(type));
+        public static bool IsAssignableTo<TTarget>([NotNull] this Type type)
+        {
+            Guard.Against.Null(type, nameof(type));
 
-        //    return type.IsAssignableTo(typeof(TTarget));
-        //}
+            return typeof(TTarget).IsAssignableFrom(type);
+        }
+
+        /// <summary>
+        /// Determines whether an instance of this type can be assigned to
+        /// an instance of the <typeparamref name="TTarget"></typeparamref>.
+        ///
+        /// Internally uses <see cref="Type.IsAssignableFrom"/>.
+        /// </summary>
+        /// <typeparam name="TTarget">Target type</typeparam> (as reverse).
+        public static bool IsAssignableTo([NotNull] this Type type, [NotNull] Type targetType)
+        {
+            Guard.Against.Null(type, nameof(type));
+
+            return targetType.IsAssignableFrom(type);
+        }
 
         public static string GetFullNameWithAssemblyName(this Type type)
         {

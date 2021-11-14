@@ -18,7 +18,7 @@ namespace System.Collections.Generic
         /// <exception cref="ArgumentNullException">If the given dictionary is null</exception>
         public static T ToObject<T>([NotNull] this IDictionary<string, object> source) where T : class, new()
         {
-            Guard.Against.NullOrEmptyCollection(source, nameof(source));
+            Guard.Against.NullOrEmpty(source, nameof(source));
 
             var someObject = new T();
             var someObjectType = someObject.GetType();
@@ -42,7 +42,7 @@ namespace System.Collections.Generic
         /// <exception cref="ArgumentNullException">If the given dictionary is null</exception>
         public static string ToQueryString([NotNull] this IDictionary<string, object> source)
         {
-            Guard.Against.NullOrEmptyCollection(source, nameof(source));
+            Guard.Against.NullOrEmpty(source, nameof(source));
 
             return string.Join("&", source.Select(x => $"{x.Key}={ConvertToString(x.Value)}"));
         }
